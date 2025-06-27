@@ -1,5 +1,4 @@
 # server.py
-import os
 from fastmcp import FastMCP
 
 # Import feature modules
@@ -9,8 +8,8 @@ from features import common, entities, apm, synthetics, alerts
 # Dependencies are defined here, but execution relies on fastmcp CLI handling them
 # unless run directly with `python server.py` (not recommended for this setup).
 mcp = FastMCP(
-    "New Relic NerdGraph MCP Server",
-    description="Provides tools and resources to interact with the New Relic NerdGraph API via MCP.",
+    "New Relic MCP Server",
+    instructions="Provides tools and resources to interact with the New Relic NerdGraph API via MCP.",
     dependencies=["requests"] # Core dependency needed by client.py
 )
 
@@ -40,13 +39,13 @@ if __name__ == "__main__":
     try:
         import config
         if not config.API_KEY:
-             print("ERROR: NEW_RELIC_API_KEY environment variable is not set.")
+            print("ERROR: NEW_RELIC_API_KEY environment variable is not set.")
         if not config.ACCOUNT_ID:
             print("WARNING: NEW_RELIC_ACCOUNT_ID environment variable is not set. Some features require it.")
     except ImportError:
-         print("ERROR: Could not import config.py")
+            print("ERROR: Could not import config.py")
     except Exception as e:
-         print(f"ERROR loading configuration: {e}")
+            print(f"ERROR loading configuration: {e}")
 
 
     print("\nThis script defines the MCP server instance.")

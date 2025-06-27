@@ -1,7 +1,10 @@
-import requests
 import json
-from typing import Optional, Dict, Any
-import config # Use direct import as it's top-level
+from typing import Any, Dict, Optional
+
+import requests
+
+import config  # Use direct import as it's top-level
+
 
 def execute_nerdgraph_query(query: str, variables: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     """
@@ -60,8 +63,8 @@ def format_json_response(result: Dict[str, Any]) -> str:
         print(f"NerdGraph query returned errors: {json.dumps(result['errors'], indent=2)}")
         # Pass errors through in the JSON string
     elif "data" not in result and "errors" not in result:
-         # If no 'data' and no 'errors', it might be an unexpected response format
-         print(f"Warning: NerdGraph response missing 'data' and 'errors' fields: {json.dumps(result, indent=2)}")
+        # If no 'data' and no 'errors', it might be an unexpected response format
+        print(f"Warning: NerdGraph response missing 'data' and 'errors' fields: {json.dumps(result, indent=2)}")
 
     try:
         # Return the full result (including data and/or errors)
