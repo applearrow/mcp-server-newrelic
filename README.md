@@ -91,6 +91,23 @@ Leave this terminal window running.
     *   **Natural Language Example:** "Show me my APM applications" or "List open critical incidents in account 1234567"
     *   **Direct Invocation (if supported):** `list_apm_applications()` or `list_open_incidents(priority='CRITICAL', target_account_id=1234567)`
 
+### Config for VS Code
+This is the content of the file .vscode/mcp.json that has to be added to configure this mcp server: 
+```
+{
+    "servers": {
+        "new-relic-local-server": {
+            "type": "stdio",
+            "command": "fastmcp",
+            "args": [
+                "run",
+                "server.py:mcp"
+            ]
+        }
+    }
+}
+```
+
 ## Available Tools & Resources
 
 The server provides the following functions accessible via the Model Context Protocol:
